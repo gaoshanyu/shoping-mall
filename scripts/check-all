@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 set -e
 
-fvm flutter pub get
-fvm flutter analyze . --no-fatal-warnings
-fvm dart format -l 200 . --set-exit-if-changed .
-fvm flutter test --coverage
+flutter pub get
+flutter analyze . --no-fatal-warnings
+dart format -l 200 . --set-exit-if-changed .
+flutter test --coverage
 
 lcov -r coverage/lcov.info '*/__test*__/*' --exclude -o coverage/lcov_cleaned.info
 
