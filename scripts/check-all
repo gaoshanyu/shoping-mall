@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+set -e
+
+flutter pub get
+flutter analyze . --no-fatal-warnings
+dart format -l 200 . --set-exit-if-changed .
+flutter test --coverage
+
+lcov -r coverage/lcov.info '*/__test*__/*' --exclude -o coverage/lcov_cleaned.info
+
+genhtml coverage/lcov_cleaned.info --output=coverage
