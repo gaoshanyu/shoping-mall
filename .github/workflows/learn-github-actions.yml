@@ -12,11 +12,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: sudo ./scripts/check-all
-  upload-coverage-reports:
-    needs: check-all
-    runs-on: macos-latest
-    steps:
-      - uses: codecov/codecov-action@v3
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
   check-bats-version:
     runs-on: macos-latest
     steps:
