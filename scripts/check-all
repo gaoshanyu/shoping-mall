@@ -6,6 +6,6 @@ fvm flutter analyze . --no-fatal-warnings
 fvm dart format -l 200 . --set-exit-if-changed .
 fvm flutter test --coverage
 
-lcov -r coverage/lcov.info '*/__test*__/*' --exclude -o coverage/lcov_cleaned.info
+lcov -r coverage/lcov.info '*/__test*__/*' -o coverage/lcov_cleaned.info
 
 genhtml coverage/lcov_cleaned.info --output=coverage
