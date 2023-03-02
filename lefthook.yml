@@ -1,4 +1,4 @@
-pre-commit:
+pre-push:
   commands:
     check-all:
       run: ./scripts/check-all
