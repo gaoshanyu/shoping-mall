@@ -6,12 +6,12 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - run: ./scripts/setup-server
+      - run: sudo ./scripts/setup-server
   check-all:
     needs: setup
     runs-on: macos-latest
     steps:
-      - run: ./scripts/check-all
+      - run: sudo ./scripts/check-all
   upload-coverage-reports:
     needs: check-all
     runs-on: macos-latest
