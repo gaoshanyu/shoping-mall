@@ -2,8 +2,23 @@ name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
+  setup:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./scripts/setup-server
+  check-all:
+    needs: setup
+    runs-on: macos-latest
+    steps:
+      - run: ./scripts/check-all
+  upload-coverage-reports:
+    needs: check-all
+    runs-on: macos-latest
+    steps:
+      - uses: codecov/codecov-action@v3
   check-bats-version:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
